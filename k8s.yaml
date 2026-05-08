@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: resttemplateserver-hub
+  namespace: default
   labels:
     app: resttemplateserver-hub
 spec:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
         - name: resttemplateserver-hub
-          image: yklee2002/resttemplateserver-hub:87610a02a9a6b236f7241b6ac6537ead042bf428
+          image: yklee2002/resttemplateserver-hub:0de939a4df29861e03becb02a7bb4fcabfc93d9d
           ports:
             - containerPort: 8080
           env:
@@ -32,6 +33,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: resttemplateserver-hub
+  namespace: default
 spec:
   type: NodePort
   selector:
@@ -40,4 +42,3 @@ spec:
     - port: 8080
       targetPort: 8080
       nodePort: 30111
-
